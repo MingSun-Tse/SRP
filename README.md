@@ -6,7 +6,7 @@
     <a><img src="figs/neu.png"  height="90px" ></a>
 </div>
 
-This repository is for a new network pruning method (`Aligned Structured Sparsity Learning, ASSL`) for efficient single image super-resolution (SR), introduced in our ICLR 2022 poster paper:
+This repository is for a new network pruning method (`Structure-Regularized Pruning, SRP`) for efficient single image super-resolution (SR), introduced in our ICLR 2022 poster paper:
 > **Learning Efficient Image Super-Resolution Networks via Structure-Regularized Pruning [[Camera Ready](https://openreview.net/pdf?id=AjGC97Aofee)]** \
 > [Yulun Zhang*](http://yulunzhang.com/), [Huan Wang*](http://huanwang.tech/), [Can Qin](http://canqin.tech/), and [Yun Fu](http://www1.ece.neu.edu/~yunfu/) (*equal contribution) \
 > Northeastern University, Boston, MA, USA
