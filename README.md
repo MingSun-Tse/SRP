@@ -75,11 +75,11 @@ PSNR/SSIM comparison on popular SR benchmark datasets is shown below (best in re
   <img src="figs/ICLR22_SRP_PSNR_SmallModel.png" width="800px">
 </div>
 
-### 1.2 Visual Results with Efficient SR Models
+<!-- ### 1.2 Visual Results with Efficient SR Models
 Visual comparison (x4) among lightweight SR approaches on the Urban100 dataset is shown below. Please see our [releases](https://github.com/MingSun-Tse/ASSL/releases) for the complete visual results on Set5/Set14/B100/Urban100/Manga109.
 <div align="center">
   <img src="figs/ICLR22_SRP_Visual_SmallModel.png" width="800px">
-</div>
+</div> -->
 
 ### 2.1 Quantitative Results with Large SR Models
 PSNR/SSIM comparison on popular SR benchmark datasets is shown below (best in red, second best in blue).
@@ -87,11 +87,11 @@ PSNR/SSIM comparison on popular SR benchmark datasets is shown below (best in re
   <img src="figs/ICLR22_SRP_PSNR_LargeModel.png" width="800px">
 </div>
 
-### 2.2 Visual Results with Large SR Models
+<!-- ### 2.2 Visual Results with Large SR Models
 Visual comparison (x4) among lightweight SR approaches on the Urban100 dataset is shown below. Please see our [releases](https://github.com/MingSun-Tse/ASSL/releases) for the complete visual results on Set5/Set14/B100/Urban100/Manga109.
 <div align="center">
   <img src="figs/ICLR22_SRP_Visual_LargeModel.png" width="800px">
-</div>
+</div> -->
 
 
 ## Citation
