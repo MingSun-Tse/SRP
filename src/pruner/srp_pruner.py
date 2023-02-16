@@ -101,14 +101,6 @@ class Pruner(MetaPruner):
                 # (1) update reg of this layer (2) determine if it is time to stop update reg
                 if self.args.greg_mode in ['part']:
                     finish_update_reg = self._srp_reg(m, name)
-
-                # Log down mag and reg vs. step for checking
-                if self.total_iter % self.args.print_interval == 0:
-                    self._log_down_mag_reg(self.w_abs[name], name)
-                if self.args.save_mag_reg_log and self.total_iter % self.args.print_interval == 0:
-                    layer_index = self.layers[name].index
-                    out = pjoin(self.logger.log_path, "%d_mag_reg_log.npy" % layer_index)
-                    np.save(out, self.mag_reg_log[name])
                     
                 # Check prune state
                 if finish_update_reg:
@@ -211,9 +203,6 @@ class Pruner(MetaPruner):
                 self.logprint("")
                 self.logprint(f"Iter {self.total_iter} [prune_state: {self.prune_state} method: {self.args.method} compare_mode: {self.args.compare_mode} greg_mode: {self.args.greg_mode}] LR: {learning_rate} " + "-"*40)
 
-                # for constrained Conv layers, at prune_state 'ssa', do not update their regularization co-efficients
-                if self.total_iter % self.args.update_reg_interval == 0:
-                    self._update_reg(skip=self.constrained_layers)
 
             loss.backward()
             if self.args.gclip > 0:
@@ -222,7 +211,7 @@ class Pruner(MetaPruner):
                     self.args.gclip
                 )
             
-            # @mst: update reg factors and apply them before optimizer updates
+            # -- @mst: update reg factors and apply them before optimizer updates
             if self.prune_state in ['update_reg'] and self.total_iter % self.args.update_reg_interval == 0:
                 self._update_reg()
 
@@ -246,20 +235,10 @@ class Pruner(MetaPruner):
                     timer_data.release()))
             timer_data.tic()
 
-            # @mst: at the end of 'ssa', switch prune_state to 'update_reg'
-            if self.prune_state in ['ssa'] and self.total_iter == self.args.iter_ssa:
-                self.pr, self.pruned_wg, self.kept_wg = self._get_kept_wg_L1(align_constrained=True)
-                self.prune_state = 'update_reg'
-                self.logprint(f'==> Iter {self.total_iter} prune_state "ssa" is done, get pruned_wg/kept_wg, switch to {self.prune_state}.')
-
             # @mst: exit of reg pruning loop
             if self.prune_state in ["stabilize_reg"] and self.total_iter - self.iter_stabilize_reg == self.args.stabilize_reg_interval:
                 self.logprint(f"==> 'stabilize_reg' is done. Iter {self.total_iter}. About to prune and build new model. Testing...")
                 self.test()
-                
-                if self.args.greg_mode in ['all']:
-                    self.pr, self.pruned_wg, self.kept_wg = self._get_kept_wg_L1(align_constrained=True)
-                    self.logprint(f'==> Get pruned_wg/kept_wg.')
 
                 self._prune_and_build_new_model()
                 path = self._save_model('model_just_finished_prune.pt')

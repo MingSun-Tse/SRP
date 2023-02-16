@@ -62,7 +62,7 @@ python main.py --model RIRSR --scale 2 --patch_size 96 --chop --save_results --n
 
 python main.py --model RIRSR --scale 3 --patch_size 144 --chop --save_results --n_resgroups 10 --n_resblocks 20 --n_feats 96 --method SRP --index_layer name_matching --stage_pr *:0.34 --skip_layers *mean*,*tail* --same_pruned_wg_layers model.head.0,model.body.10,*body.2,*body.20 --reg_upper_limit 0.5 --reg_granularity_prune 0.0001 --update_reg_interval 20 --stabilize_reg_interval 43150 --pre_train ../pretrain_model/RIRSR_BIX3_G10R20F96P48M589.pt  --project SRP__RIRSR__X3__UsePretrained_PR0.34
 
-python main.py --model RIRSR --scale 4 --patch_size 196 --chop --save_results --n_resgroups 10 --n_resblocks 20 --n_feats 96 --method SRP --index_layer name_matching --stage_pr *:0.34 --skip_layers *mean*,*tail* --same_pruned_wg_layers model.head.0,model.body.10,*body.2,*body.20 --reg_upper_limit 0.5 --reg_granularity_prune 0.0001 --update_reg_interval 20 --stabilize_reg_interval 43150 --pre_train ../pretrain_model/RIRSR_BIX4_G10R20F96P48M88.pt  --project SRP__RIRSR__X4__UsePretrained_PR0.34
+python main.py --model RIRSR --scale 4 --patch_size 192 --chop --save_results --n_resgroups 10 --n_resblocks 20 --n_feats 96 --method SRP --index_layer name_matching --stage_pr *:0.34 --skip_layers *mean*,*tail* --same_pruned_wg_layers model.head.0,model.body.10,*body.2,*body.20 --reg_upper_limit 0.5 --reg_granularity_prune 0.0001 --update_reg_interval 20 --stabilize_reg_interval 43150 --pre_train ../pretrain_model/RIRSR_BIX4_G10R20F96P48M88.pt  --project SRP__RIRSR__X4__UsePretrained_PR0.34
 
 ```
 Note, the data should be set up at the path `--dir_data data/SR/RGB/BIX2X3X4/pt_bin`.
@@ -75,11 +75,12 @@ PSNR/SSIM comparison on popular SR benchmark datasets is shown below (best in re
   <img src="figs/ICLR22_SRP_PSNR_SmallModel.png" width="800px">
 </div>
 
-<!-- ### 1.2 Visual Results with Efficient SR Models
-Visual comparison (x4) among lightweight SR approaches on the Urban100 dataset is shown below. Please see our [releases](https://github.com/MingSun-Tse/ASSL/releases) for the complete visual results on Set5/Set14/B100/Urban100/Manga109.
+### 1.2 Visual Results with Efficient SR Models
+Visual comparison (x4) among lightweight SR approaches on the Urban100 dataset is shown below.
+<!-- Please see our [releases](https://github.com/MingSun-Tse/SRP/releases) for the complete visual results on Set5/Set14/B100/Urban100/Manga109. -->
 <div align="center">
   <img src="figs/ICLR22_SRP_Visual_SmallModel.png" width="800px">
-</div> -->
+</div>
 
 ### 2.1 Quantitative Results with Large SR Models
 PSNR/SSIM comparison on popular SR benchmark datasets is shown below (best in red, second best in blue).
@@ -87,11 +88,12 @@ PSNR/SSIM comparison on popular SR benchmark datasets is shown below (best in re
   <img src="figs/ICLR22_SRP_PSNR_LargeModel.png" width="800px">
 </div>
 
-<!-- ### 2.2 Visual Results with Large SR Models
-Visual comparison (x4) among lightweight SR approaches on the Urban100 dataset is shown below. Please see our [releases](https://github.com/MingSun-Tse/ASSL/releases) for the complete visual results on Set5/Set14/B100/Urban100/Manga109.
+### 2.2 Visual Results with Large SR Models
+Visual comparison (x4) among lightweight SR approaches on the Urban100 dataset is shown below. 
+<!-- Please see our [releases](https://github.com/MingSun-Tse/SRP/releases) for the complete visual results on Set5/Set14/B100/Urban100/Manga109. -->
 <div align="center">
   <img src="figs/ICLR22_SRP_Visual_LargeModel.png" width="800px">
-</div> -->
+</div>
 
 
 ## Citation

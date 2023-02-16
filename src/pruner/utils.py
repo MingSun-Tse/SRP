@@ -224,7 +224,8 @@ def pick_pruned_model(model, layers, raw_pr, wg='filter', criterion='l1-norm', c
 
     if align_constrained:
         pruned_wg, kept_wg = set_same_pruned(model, pr, pruned_wg, kept_wg, constrained, 
-                                                wg=wg, criterion=criterion, sort_mode=sort_mode)
+                                                wg=wg, criterion=criterion, sort_mode='rand')
+                                                # In SRP, the pruned indices of constrained layers are randomly selected
     
     return pr, pruned_wg, kept_wg
 

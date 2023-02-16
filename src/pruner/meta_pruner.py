@@ -41,32 +41,6 @@ class MetaPruner:
                         self.skip_layers += [name]
         print(f'Skip layers: {self.skip_layers}')
 
-        # # Calculate the needed avg sparsity for free Conv layers
-        # if args.total_sparsity > 0:
-        #     constarined_flops, free_flops, skip_flops = 0, 0, 0
-        #     last_N = 0
-        #     for name, module in self.model.named_modules():
-        #         if isinstance(module, self.LEARNABLES):
-        #             N, C, *_ = module.weight.shape
-        #             after_upsample = last_N and C != last_N
-        #             last_N = N
-                    
-        #             factor = args.scale[0] ** 2 if after_upsample else 1
-        #             flops = module.weight.shape[0] * module.weight.shape[1] * factor
-        #             if name in self.constrained_layers:
-        #                 constarined_flops += flops
-        #             else:
-        #                 free_flops += flops
-        #             if name in self.skip_layers:
-        #                 skip_flops += flops
-                    
-        #     total_flops = constarined_flops + free_flops
-        #     print(f'Constarined_flops ratio: {constarined_flops / total_flops:.4f}  Free_flops ratio: {free_flops / total_flops:.4f}  Skip_flops ratio {skip_flops / total_flops:.4f}')
-        #     kept_free_flops = total_flops * (1 - args.total_sparsity) - skip_flops - constarined_flops * (1 - args.constrained_sparsity) 
-        #     free_sparsity = 1 - kept_free_flops / free_flops
-        #     print(f'Given total_sparsity {args.total_sparsity}, constrained_sparsity {args.constrained_sparsity}, and skip_layers {args.skip_layers}, the free_sparsity should be set to {free_sparsity:.4f}')
-
-
     def _get_kept_wg_L1(self, align_constrained=False):
         # ************************* core pruning function **************************
         pr, pruned_wg, kept_wg = pick_pruned_model(self.model, self.layers, self.raw_pr, 
