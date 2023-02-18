@@ -25,7 +25,7 @@ Several image super-resolution (SR) networks have been proposed of late for effi
 git clone git@github.com:mingsun-tse/SRP.git -b master
 cd SRP/src
 
-# We used PyTorch 1.2.0; higher versions should also be okay. Anaconda is strongly recommended
+# We used PyTorch 1.9; higher versions should also be okay. Anaconda is strongly recommended
 pip install -r requirements.txt
 ```
 
